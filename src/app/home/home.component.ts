@@ -7,18 +7,15 @@ import { Products } from '../../types';
   standalone: true,
   imports: [],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
 })
 export class HomeComponent {
+  constructor(private productsService: ProductsService) {}
 
-  constructor(
-    private productsService : ProductsService
-  ){}
-
-  ngOnInit(){
+  ngOnInit() {
     this.productsService
       .getProducts('http://localhost:5500/clothes', { page: 0, perPage: 5 })
-      .subscribe((products:Products) => {
+      .subscribe((products: Products) => {
         console.log(products);
       });
   }
