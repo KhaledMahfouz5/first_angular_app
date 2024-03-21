@@ -1,6 +1,13 @@
-<div class="column">
+<div class="column gap-2">
+  <!-- Products Section -->
   <div class="row wrap gap-2 space-between">
     <app-product *ngFor="let product of products" [product]="product"
-    (productOutput)="onProductOutput($event)"></app-product>
+      (productOutput)="onProductOutput($event)"></app-product>
   </div>
+  <!-- Paginator -->
+    <p-paginator
+     (onPageChange)="onPageChange($event)"
+     [rows]="rows"
+     [totalRecords]="totalRecords"
+     [rowsPerPageOptions]="[5 , 10 , 20]"></p-paginator>
 </div>
