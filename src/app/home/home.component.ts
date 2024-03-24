@@ -32,9 +32,56 @@ export class HomeComponent {
         page,
         perPage,
       })
-      .subscribe((products: Products) => {
-        this.products = products.items;
-        this.totalRecords = products.total;
+      .subscribe({
+        next: (data: Products) => {
+          this.products = data.items;
+          this.totalRecords = data.total;
+        },
+        error: (error) => {
+          console.error(error);
+        },
+      });
+  }
+
+  editProduct(product: Product, id: number) {
+    this.productsService
+      .editProduct(`localhost:5500/clothes/${id}`, product)
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+          this.fetchProducts(0, this.rows);
+        },
+        error: (error) => {
+          console.error(error);
+        },
+      });
+  }
+
+  deleteProduct(id: number) {
+    this.productsService
+      .deleteProduct(`localhost:5500/clothes/${id}`)
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+          this.fetchProducts(0, this.rows);
+        },
+        error: (error) => {
+          console.error(error);
+        },
+      });
+  }
+
+  addProduct(product: Product) {
+    this.productsService
+      .addProduct(`localhost:5500/clothes`, product)
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+          this.fetchProducts(0, this.rows);
+        },
+        error: (error) => {
+          console.error(error);
+        },
       });
   }
 
