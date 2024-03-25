@@ -5,10 +5,10 @@
       (edit)="toggleEditPopup($event)" (delete)="toggleDeletePopup($event)" ></app-product>
   </div>
   <!-- Edit Product Popup -->
-  <app-edit-popup [product]="selectedProduct" [display]="displayEditPopup" (confirm)="onConfirmEdit($event)"
+  <app-edit-popup [product]="selectedProduct" [(display)]="displayEditPopup" (confirm)="onConfirmEdit($event)"
     header="Edit Product"></app-edit-popup>
   <!-- Edit Product Popup -->
-  <app-edit-popup [display]="displayEditPopup" (confirm)="onConfirmAdd($event)" header="Add Product"></app-edit-popup>
+  <app-edit-popup [(display)]="displayEditPopup" (confirm)="onConfirmAdd($event)" header="Add Product"></app-edit-popup>
   <!-- Add Product Button -->
   <button type="button" pButton icon="pi pi-plus" (click)="toggleAddPopup()" label="Add Product"></button>
   <!-- Paginator -->

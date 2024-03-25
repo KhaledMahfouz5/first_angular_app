@@ -1,15 +1,16 @@
 <div class="column wrapper gap-2">
-<img [src]="product.image" alt="product thumbnail" loading="lazy" >
-<h2 class="title">
-  {{product.id}} . {{product.name}}
-</h2>
-<div class="row">
-  <span class="price-label">Price : </span>
-  <span class="price">{{product.price}}</span>
+  <img [src]="product.image" alt="product thumbnail" loading="lazy">
+  <h2 class="title">
+    {{product.id}} . {{product.name}}
+  </h2>
+  <div class="row">
+    <span class="price-label">Price : </span>
+    <span class="price">{{product.price}}</span>
+  </div>
+  <p-rating [(ngModel)]="product.rating" [readonly]="true" [cancel]="false"></p-rating>
+  <div class="row">
+    <button type="button" pButton icon="pi pi-pencil" (click)="editProduct()" label="Edit"></button>
+    <button #magicButton type="button" pButton icon="pi pi-trash" (click)="deleteProduct()" label="Delete"></button>
+  </div>
 </div>
-<p-rating [(ngModel)]="product.rating" [readonly]="true" [cancel]="false"></p-rating>
-<div class="row">
-  <button type="button" pButton icon="pi pi-pencil" (click)="editProduct()" label="Edit"></button>
-  <button type="button" pButton icon="pi pi-trash" (click)="deleteProduct()" label="Delete"></button>
-</div>
-</div>
+<p-confirmPopup></p-confirmPopup>
